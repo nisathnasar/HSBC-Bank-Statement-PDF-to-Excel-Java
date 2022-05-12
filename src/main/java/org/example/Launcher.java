@@ -11,11 +11,20 @@ import java.util.List;
 
 public class Launcher {
 
-    public static void main(String[] args) throws IOException {
+    public String sourceFilePath;
+    public String destinationFilePath;
+    public int numOfPagesToExtract;
+    public Launcher(String sourceFilePath, String destinationFilePath, int numOfPagesToExtract) throws IOException {
+        this.sourceFilePath = sourceFilePath;
+        this.destinationFilePath = destinationFilePath;
+        this.numOfPagesToExtract = numOfPagesToExtract;
 
+    }
+
+    public void activateSequence() throws IOException {
         PDFtoCSV pdftocsv = new PDFtoCSV();
-        int numOfPagesToExtractFrom = 3;
-        String readFilePath = "C:\\Users\\ASUS\\Documents\\bank statement output\\2021-08-26_Statement.pdf";
+        int numOfPagesToExtractFrom = numOfPagesToExtract;
+        String readFilePath = sourceFilePath;
         File oldFile = new File(readFilePath);
         PDDocument document = PDDocument.load(oldFile);
         Splitter splitter = new Splitter();
@@ -39,7 +48,7 @@ public class Launcher {
         rows = pdftocsv.processLines(rows);
         pdftocsv.printList(rows);
 
-        FileWriter fw = new FileWriter("C:\\Users\\ASUS\\Documents\\bank statement output\\output.csv");
+        FileWriter fw = new FileWriter(destinationFilePath);
 
         //write header
         fw.write("Date, Type, Details, Pay Out, Pay In, Balance\n");
@@ -138,9 +147,17 @@ public class Launcher {
 
         document.close();
         fw.close();
+    }
+    public static void main(String[] args) throws IOException {
 
-        System.out.println(
-        pdftocsv.endsWith1MoneyValue("27-Aug-21, CR, M Sirajudeen Sirajudeen 66.50 881.14"));
+        Launcher launcher = new Launcher(
+                "C:\\Users\\ASUS\\Documents\\bank statement output\\2021-08-26_Statement.pdf",
+                "C:\\Users\\ASUS\\Documents\\bank statement output\\output.csv",
+                2
+        );
+
+        launcher.activateSequence();
+
 
     }
 }
