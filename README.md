@@ -13,4 +13,4 @@ Steps to run the program:
 7. Click Generate
 8. Check your output.csv file. 
 
-![image](![image](files/Users/jzhang/Desktop/Isolated.png))
+![WT6YpSr](https://user-images.githubusercontent.com/37841418/168278416-0965aaba-4f60-48eb-add9-22b52fd0e067.png)
