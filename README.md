@@ -12,3 +12,5 @@ Steps to run the program:
 6. Check the number of pages in your pdf that contains transaction information and enter. Your pdf may have 2 pages but transactions info may be in 1 page, so enter 1 in that case.
 7. Click Generate
 8. Check your output.csv file. 
+
+![image](![image](files/Users/jzhang/Desktop/Isolated.png))
